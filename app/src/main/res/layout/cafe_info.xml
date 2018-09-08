@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/cafe_header"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_back_arrow" />
+
+                <TextView
+                    android:id="@+id/tv_cafe_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_toEndOf="@+id/btn_back"
+                    android:layout_toRightOf="@+id/btn_back"
+                    android:gravity="center"
+                    android:text="Название кафе"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    app:fontFamily="Roboto" />
+
+                <ImageButton
+                    android:id="@+id/btn_fav_cafe"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_toLeftOf="@+id/cafe_description_menu"
+                    android:layout_toStartOf="@+id/cafe_description_menu"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_favorites" />
+
+                <ImageButton
+                    android:id="@+id/cafe_description_menu"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:padding="0dp"
+                    android:src="@drawable/ic_dot_menu" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="1dp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="1dp" />
+
+                <ImageView
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="1dp" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/cafe_body"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/mainBackgroundColor"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/cafe_header">
+
+            <RelativeLayout
+                android:id="@+id/cafe_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/cafe_work_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/textPrimaryColor"
+                        android:text="Сегодня"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:clickable="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_cafe_work_hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="10:00 -- 21:00"
+                            android:textColor="@color/textPrimaryColor" />
+
+                        <ImageView
+                            android:id="@+id/btn_cafe_schedule"
+                            android:layout_width="18dp"
+                            android:layout_height="match_parent"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_arrow_down"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/address_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_below="@+id/cafe_work_time"
+                    android:textColor="@color/textPrimaryColor"
+                    android:text="Адрес"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_cafe_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_alignBottom="@+id/address_text"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_toEndOf="@+id/address_text"
+                    android:layout_toRightOf="@+id/address_text"
+                    android:textColor="@color/textPrimaryColor"
+                    android:text="Улица Пушкина, д 23" />
+
+                <TextView
+                    android:id="@+id/contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_below="@+id/address_text"
+                    android:textColor="@color/textPrimaryColor"
+                    android:text="Контакты"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_cafe_contacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_alignBottom="@+id/contacts"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:textColor="@color/textPrimaryColor"
+                    android:layout_toEndOf="@+id/contacts"
+                    android:layout_toRightOf="@+id/contacts"
+                    android:text="8 800 555 35 35" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cafe_info"
+                android:layout_marginTop="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/popular_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:paddingBottom="2dp"
+                    android:paddingTop="2dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginStart="0dp"
+                        android:textColor="@color/textPrimaryColor"
+                        android:text="Популярные"
+                        android:textSize="21dp" />
+
+                    <Button
+                        android:id="@+id/btn_show_all_fav"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginRight="0dp"
+                        android:background="#F5AD18"
+                        android:padding="8dp"
+                        android:text="Смотреть все"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/popular_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/popular_header"
+                    android:layout_marginTop="16dp"
+                    android:minHeight="115dp">
+
+                    <LinearLayout
+                        android:id="@+id/favorites_list_holder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_comments_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textPrimaryColor"
+                    android:textSize="21dp"
+                    android:text="Отзывы"/>
+
+                <LinearLayout
+                    android:id="@+id/comments_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
