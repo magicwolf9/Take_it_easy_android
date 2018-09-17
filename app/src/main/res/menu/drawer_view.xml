@@ -20,7 +20,8 @@
             android:id="@+id/exit"
             android:icon="@android:drawable/btn_default"
             android:textColor="@color/textPrimaryColor"
-            android:title="Выход"/>
+            android:title="Выход"
+            />
 
     </group>
 </menu>

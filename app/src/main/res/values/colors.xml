@@ -7,4 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="mainBackgroundColor">#E5E5E5</color>
     <color name="textPrimaryColor">#333333</color>
+    <color name="pink_reg">#ff3399</color>
+    <color name="pink_lost_password">#ff6699</color>
 </resources>

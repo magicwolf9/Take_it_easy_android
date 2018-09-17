@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TakeItEasyAndroid.iml" filepath="$PROJECT_DIR$/TakeItEasyAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Take_it_easy_android.iml" filepath="$PROJECT_DIR$/.idea/Take_it_easy_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

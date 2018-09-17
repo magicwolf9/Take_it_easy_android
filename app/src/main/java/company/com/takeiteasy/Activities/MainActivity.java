@@ -5,6 +5,7 @@ import android.Manifest;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -46,6 +47,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import company.com.takeiteasy.Activities.CafeActivity;
+import company.com.takeiteasy.Fragments.CommentsList;
 import company.com.takeiteasy.Managers.ServerManager;
 import company.com.takeiteasy.Managers.VolleyCallback;
 import company.com.takeiteasy.R;
@@ -56,12 +58,35 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private MapView mapView;
 
+    protected boolean inSystem=false;
+
     private static final int PERMISSIONS_CODE = 109;
+
+    SharedPreferences sPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MapKitFactory.setApiKey("api key here");
+        try {
+                inSystem = sPref.getBoolean("INSYSTEM", false);
+                Log.d("log1", "Есть сохранение" + sPref.getBoolean("INSYSTEM", false));
+        }
+        catch (Exception e)
+        {
+            Log.d("log1", "нет сохранения");
+        }
+        if(!inSystem) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            inSystem=true;
+            sPref = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor ed = sPref.edit();
+            ed.putBoolean("INSYSTEM",inSystem);
+            Log.d("log1", "сохраняем");
+            ed.commit();
+
+        }
+
+        MapKitFactory.setApiKey("86c7a54b-e523-4eb5-ba85-ffa74bdf875e");
         MapKitFactory.initialize(this);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -107,11 +132,20 @@ public class MainActivity extends AppCompatActivity {
                     new Animation(Animation.Type.SMOOTH, 0),
                     null);
 
-            /*ServerManager serverManager = new ServerManager(this);
+            ServerManager serverManager = new ServerManager(this);
             serverManager.getCafeByUserCoord(new VolleyCallback() {
                 @Override
+                public void onSuccess(JSONObject result) {
+
+                }
+
+                @Override
                 public void onSuccess(JSONArray result) {
-                    Log.i("Cafes", result.get(0).toString());
+                    try {
+                        Log.i("Cafes", result.get(0).toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                     final Gson gson = new Gson();
                     Type cafeListType = new TypeToken<List<Cafe>>() {
                     }.getType();
@@ -120,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
                     showCafesOnMap(cafeList);
                 }
-            }, userPositionOnMap.getTarget());*/
+            }, userPositionOnMap.getTarget());
         } else {
             Log.i("Map", "User position = ??");
         }
@@ -214,5 +248,28 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void logOut(View view){
+        inSystem=false;
+
+    }
+
+    @Override
+    protected void onResume() {
+        sPref = getPreferences(MODE_PRIVATE);
+        if(sPref.contains("INSYSTEM")) {
+            inSystem = sPref.getBoolean("INSYSTEM", false);
+        }
+
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putBoolean("INSYSTEM",inSystem);
+        ed.commit();
+        super.onDestroy();
     }
 }

@@ -19,6 +19,7 @@ public class ServerManager {
 
     private String siteUrl = "http://46.21.249.26:8000";
     private String cafeUrl = "/cafes/get_cafe_by_id";
+    private  String authUrl ="/users/auth";
     private RequestQueue requestQueue;
 
     public ServerManager(Context context){
@@ -73,6 +74,22 @@ public class ServerManager {
             }
         });
 
+        this.requestQueue.add(stringRequest);
+    }
+    //ниже новое от меня
+    public void loginUser(final VolleyCallback callback){
+        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.POST, siteUrl +authUrl , null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        callback.onSuccess(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i("Error", error.toString());
+            }
+        });
         this.requestQueue.add(stringRequest);
     }
 }
